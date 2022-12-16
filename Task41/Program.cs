@@ -14,10 +14,10 @@ void NegativeNumbers ()
         {
             counter++;
         }
-        Console.WriteLine("Do you wnat to enter one more number? Answer yes/no ");
+        Console.WriteLine("Do you want to enter one more number? Answer yes/no ");
         enterRequest = Convert.ToString(Console.ReadLine());
     }
-    Console.Write("Еhe number of negative numbers entered by the user is equal to: " + counter);
+    Console.Write("The number of negative numbers entered by the user is equal to: " + counter);
 
 }
 NegativeNumbers ();
