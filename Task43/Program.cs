@@ -89,7 +89,7 @@ IntersectionFormulas(k1, b1, k2, b2);
 Console.WriteLine(" ");
 
 
-// Третий способ: максимально точное определение координат при помощи двумерных массивов
+// Третий способ: при помощи двумерных массивов
 
 void Inter(double k1, double b1, double k2, double b2)
 {
@@ -98,60 +98,56 @@ void Inter(double k1, double b1, double k2, double b2)
     double y2;
     int i = 0;
 
-    while (x < 10)
+
+    int numberOfDots = 20000;
+
+    if (k1 == k2 & b1 != b2)
     {
-        int numberOfDots = 20000;
-
-        if (k1 == k2 & b1 != b2)
-        {
-            Console.WriteLine("Straight lines don't intersect (using brute force)");
-            break;
-        }
-        if (k1 == k2 & b1 == b2)
-        {
-            Console.WriteLine("Straight lines match (using brute force)");
-            break;
-        }
-        double[,] lineOneArray = new double[2, numberOfDots];
-        double[,] lineTwoArray = new double[2, numberOfDots];
-
-        while (i < numberOfDots)
-        {
-            y1 = k1 * x + b1;
-            lineOneArray[0, i] = Math.Round(x, 7);
-            lineOneArray[1, i] = Math.Round(y1, 7);
-            // Console.Write($"ArrayOne x = {lineOneArray[0, i]}, y = {lineOneArray[1, i]}");
-            // Console.WriteLine(" ");
-            y2 = k2 * x + b2;
-            lineTwoArray[0, i] = Math.Round(x, 7);
-            lineTwoArray[1, i] = Math.Round(y2, 7);
-            // Console.Write($"ArrayTwo x = {lineTwoArray[0, i]}, y = {lineTwoArray[1, i]}");
-            // Console.WriteLine(" ");
-            x += 0.001;
-            i++;
-        }
-
-        int indexOne = 0;
-        int indexTwo = 0;
-        int count = 0;
-        while (indexOne < numberOfDots)
-        {
-            indexTwo = 0;
-            while (indexTwo < numberOfDots)
-            {
-                if ( lineOneArray[0, indexOne]!= 0 && lineOneArray[0, indexOne] == lineTwoArray[0, indexTwo] && lineOneArray[1, indexOne] == lineTwoArray[1, indexTwo])
-                {
-                    Console.Write($"Intersection point is found (using arrays) x = {lineOneArray[0, indexOne]}, y = {lineOneArray[1, indexOne]}");
-                    Console.WriteLine(" ");
-                    count++;
-                }
-                indexTwo++;
-            }
-            if (count == 1) break;
+        Console.WriteLine("Straight lines don't intersect (using brute force)");
             
-            indexOne++;
-        }
     }
+    if (k1 == k2 & b1 == b2)
+    {
+        Console.WriteLine("Straight lines match (using brute force)");
+            
+    }
+
+    double[,] lineOneArray = new double[2, numberOfDots];
+    double[,] lineTwoArray = new double[2, numberOfDots];
+
+    while (i < numberOfDots)
+    {
+        y1 = k1 * x + b1;
+        lineOneArray[0, i] = Math.Round(x, 2);
+        lineOneArray[1, i] = Math.Round(y1, 2);
+
+        y2 = k2 * x + b2;
+        lineTwoArray[0, i] = Math.Round(x, 2);
+        lineTwoArray[1, i] = Math.Round(y2, 2);
+
+        x += 0.001;
+        i++;
+    }
+
+    int indexOne = 0;
+    int indexTwo = 0;
+
+    while (indexOne < numberOfDots)
+    {
+        indexTwo = 0;
+        while (indexTwo < numberOfDots)
+        {
+            if (lineOneArray[0, indexOne] == lineTwoArray[0, indexTwo] && lineOneArray[1, indexOne] == lineTwoArray[1, indexTwo])
+            {
+                Console.Write($"Intersection point is found (using arrays) x = {lineOneArray[0, indexOne]}, y = {lineOneArray[1, indexOne]}");
+                Console.WriteLine(" ");
+                break;
+            }
+            indexTwo++;   
+        }
+        indexOne++;
+    }
+    
 }
 
 Inter(k1, b1, k2, b2);
