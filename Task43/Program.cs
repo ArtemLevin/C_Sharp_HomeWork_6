@@ -25,29 +25,30 @@ void Intersection(double k1, double b1, double k2, double b2)
     Console.WriteLine(" ");
     Console.WriteLine(" ");
 
-    double x = -100;
+    double x = -1000;
     double y1;
     double y2;
     double delta;
 
-    while (x < 100)
+    while (x < 1000)
     {
         y1 = k1 * x + b1;
         y2 = k2 * x + b2;
         delta = Math.Abs(y1 - y2);
-        if (k1 == k2 && b1 != b2)
+
+        if (k1 == k2 & b1 != b2)
         {
-            Console.WriteLine("Straight lines don't intersect using brute force");
+            Console.WriteLine("Straight lines don't intersect (using brute force)");
             break;
         }
-        if (k1 == k2 && b1 == b2)
+        if (k1 == k2 & b1 == b2)
         {
-            Console.WriteLine("Straight lines match");
+            Console.WriteLine("Straight lines match (using brute force)");
             break;
         }
         if (delta < 0.0001)
         {
-            Console.Write($"Intersection point is found using brute force x = {Math.Round(x, 2)}, y = {Math.Round(y1, 2)}");
+            Console.Write($"Intersection point is found (using brute force) x = {Math.Round(x, 2)}, y = {Math.Round(y1, 2)}");
             Console.WriteLine(" ");
             break;
         }
@@ -67,22 +68,22 @@ void IntersectionFormulas(double k1, double b1, double k2, double b2)
 {
     if (k1 == k2 && b1 == b2)
     {
-        Console.WriteLine("Straight lines match");
+        Console.WriteLine("Straight lines match (using formulas)");
         Console.WriteLine(" ");
-
     }
-    if (k1 == k2)
+    if (k1 == k2 && b1 != b2)
     {
-        Console.Write("Straight lines don't intersect using formulas");
+        Console.Write("Straight lines don't intersect (using formulas)");
         Console.WriteLine(" ");
     }
-    else
+    if (k1 != k2 && b1 != b2)
     {
         double x = (b2 - b1) / (k1 - k2);
         double y = k1 * ((b2 - b1) / (k1 - k2)) + b1;
-        Console.Write($"Intersection point is found using formulas x = {Math.Round(x, 5)}, y = {Math.Round(y, 5)}");
+        Console.Write($"Intersection point is found (using formulas) x = {Math.Round(x, 2)}, y = {Math.Round(y, 2)}");
         Console.WriteLine(" ");
     }
 }
 
 IntersectionFormulas(k1, b1, k2, b2);
+Console.WriteLine(" ");
