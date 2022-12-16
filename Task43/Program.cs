@@ -5,7 +5,7 @@
 // b1 = 2, k1 = 5, b2 = 4, k2 = 9 -> (-0,5; -0,5)
 
 
-// Метод перебора
+// Первый способ: метод перебора
 
 Console.Write("Enter k1 = ");
 double k1 = Convert.ToDouble(Console.ReadLine());
@@ -21,7 +21,7 @@ void Intersection(double k1, double b1, double k2, double b2)
 {
     Console.Write($"The equation of the first line y1 = {k1}*x + {b1} ");
     Console.WriteLine(" ");
-    Console.Write($"The equation of the first line y2 = {k2}*x + {b2} ");
+    Console.Write($"The equation of the second line y2 = {k2}*x + {b2} ");
     Console.WriteLine(" ");
     Console.WriteLine(" ");
 
@@ -42,7 +42,7 @@ void Intersection(double k1, double b1, double k2, double b2)
         }
         if (k1 == k2 && b1 == b2)
         {
-            Console.WriteLine("Straight lines straight lines match");
+            Console.WriteLine("Straight lines match");
             break;
         }
         if (delta < 0.0001)
@@ -61,13 +61,13 @@ Intersection(k1, b1, k2, b2);
 
 Console.WriteLine(" ");
 
-// Использование базовых знаний алгебры
+// Второй сопособ: использование базовых знаний алгебры
 
 void IntersectionFormulas(double k1, double b1, double k2, double b2)
 {
     if (k1 == k2 && b1 == b2)
     {
-        Console.WriteLine("Straight lines straight lines match");
+        Console.WriteLine("Straight lines match");
         Console.WriteLine(" ");
 
     }
